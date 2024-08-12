@@ -1,0 +1,39 @@
+name: Infrastructure CI/CD Pipeline
+
+on:
+    push:
+      branches: #Add additional branches if we neeed to add additional branches
+        - main 
+        - dev
+        - test
+        - feature/dockerimagecreation
+        - feature/cd
+        - feature/ecs
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+      - name: Terraform Init
+        run: terraform init
+        working-directory: terraform #Adjust if we have our terraform file in a different directory
+
+      - name: Terraform Plan
+        run: terraform plan -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        working-directory: terraform
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        working-directory: terraform
+
+      - name: Terraform Destroy #Remove the terraform destroy to use this pipeline in a fully functioning application
+        run: terraform destroy -auto-approve -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        working-directory: terraform # Adjust if your Terraform configuration is in a different directory
