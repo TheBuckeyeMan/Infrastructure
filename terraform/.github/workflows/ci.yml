@@ -6,9 +6,7 @@ on:
         - main 
         - dev
         - test
-        - feature/dockerimagecreation
-        - feature/cd
-        - feature/ecs
+        - feature/infrastructure
 
 jobs:
   build-and-deploy:
