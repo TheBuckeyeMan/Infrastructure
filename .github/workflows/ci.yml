@@ -24,6 +24,10 @@ jobs:
         run: terraform init
         working-directory: terraform #Adjust if we have our terraform file in a different directory
 
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: terraform 
+
       - name: Terraform Plan
         run: terraform plan -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         working-directory: terraform
@@ -32,6 +36,6 @@ jobs:
         run: terraform apply -auto-approve -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
         working-directory: terraform
 
-      - name: Terraform Destroy #Remove the terraform destroy to use this pipeline in a fully functioning application
-        run: terraform destroy -auto-approve -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-        working-directory: terraform # Adjust if your Terraform configuration is in a different directory
+    #   - name: Terraform Destroy #Remove the terraform destroy to use this pipeline in a fully functioning application
+    #     run: terraform destroy -auto-approve -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+    #     working-directory: terraform # Adjust if your Terraform configuration is in a different directory
