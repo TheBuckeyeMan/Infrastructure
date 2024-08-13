@@ -1,10 +1,11 @@
-resource "aws_security_group" "security_group"{
+resource "aws_security_group" "security_group" {
     name = "http_security_group"
     description = "ALLOW ATTP Traffic"
     vpc_id = aws_vpc.vpc.id
+
     ingress = {
-        from_port = 0
-        to_port = 0
+        from_port = 80
+        to_port = 80
         protocol = "tcp"
         cidr_block = ["0.0.0.0/0"]
     }
