@@ -3,7 +3,7 @@ name: Infrastructure CI/CD Pipeline
 on:
     push:
       branches: #Add additional branches if we neeed to add additional branches
-        - main 
+        - master
         - dev
         - test
         - feature/infrastructure
