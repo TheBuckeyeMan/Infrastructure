@@ -1,0 +1,23 @@
+terraform/.terraform/**
+.terraform/**
+.terraform/
+terraform/.terraform.lock.hcl
+
+
+
+
+#Exclude IDE Configurations
+.idea/
+*.iml
+*.classpath
+*.project
+.settings/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+#Exclude build artifacts
+*.log
+*.tmp
