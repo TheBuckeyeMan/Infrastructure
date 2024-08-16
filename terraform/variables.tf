@@ -17,6 +17,6 @@ variable "region" {
 
 #UPDATE THE NAME OF THE BUCKET HERE FOR PROVISIONING A NEW BUCKET - IT MUST BE GLOBALLY UNIQUE
 variable "bucket_name" {
-  description = "the-bucket-to-land-some-test-data-via-ecs-1220937328595736"
+  description = "New_S3_Bucket"
   type        = string
 }
