@@ -6,9 +6,7 @@ on:
         - master
         - dev
         - test
-        - feature/infrastructure
-        - feature/ECR_ECS_VPC_ETC_INFRASTRUCTURE_TEMPLATE
-
+        - feature/S3_Bucket_Creation_Template
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest 
