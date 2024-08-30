@@ -7,3 +7,9 @@ variable "aws_secret_key" {
   description = "AWS secret key"
   type        = string
 }
+
+variable "region" {
+    description = "What region the ECR is being deployed"
+    type = string
+    default = "us-east-2"
+}
